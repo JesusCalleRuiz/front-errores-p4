@@ -21,7 +21,8 @@ export async function handleResponse<T>(response: Response): Promise<T> {
 
 export async function fetchUsers(): Promise<User[]> {
   const response = await fetch(`${API_URL}/api/users/`);
-  return handleResponse<User[]>(response);
+  const data = await handleResponse<{ success: boolean; data: User[]}>(response,);
+  return Array.isArray(data.data) ? data.data : [];
 }
 
 export async function fetchUser(id: string): Promise<User> {
@@ -45,7 +46,7 @@ export async function updateUser(
   userData: UpdateUserRequest,
 ): Promise<User> {
   const response = await fetch(`${API_URL}/api/users/${id}`, {
-    method: "DELETE",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -56,14 +57,18 @@ export async function updateUser(
 
 export async function deleteUser(id: string): Promise<void> {
   const response = await fetch(`${API_URL}/api/users/${id}`, {
-    method: "PUT",
+    method: "DELETE",
   });
   await handleResponse<void>(response);
 }
 
 export async function fetchTasks(): Promise<Task[]> {
   const response = await fetch(`${API_URL}/api/tasks/`);
-  return handleResponse<Task[]>(response);
+  const data = await handleResponse<{ success: boolean; data: Task[] }>(
+    response,
+  );
+
+  return Array.isArray(data.data) ? data.data : [];
 }
 
 export async function fetchTask(id: string): Promise<Task> {
@@ -87,7 +92,7 @@ export async function updateTask(
   taskData: UpdateTaskRequest,
 ): Promise<Task> {
   const response = await fetch(`${API_URL}/api/tasks/${id}`, {
-    method: "DELETE",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
