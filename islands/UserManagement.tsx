@@ -25,6 +25,7 @@ export default function UserManagement() {
     try {
       const usersData = await fetchUsers();
       users.value = usersData;
+      console.log(users.value);
     } catch (err) {
       console.error("Failed to load users:", err);
       error.value = err instanceof Error ? err.message : "Failed to load users";

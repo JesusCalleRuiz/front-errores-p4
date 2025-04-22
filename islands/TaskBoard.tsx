@@ -145,8 +145,8 @@ export default function TaskBoard() {
           <div class="task-board">
             <TaskColumn
               title="Pending"
-              status={TaskStatus.TODO}
-              tasks={getTasksByStatus(TaskStatus.TODO)}
+              status={TaskStatus.PENDING}
+              tasks={getTasksByStatus(TaskStatus.PENDING)}
               columnClass="pending-column"
               onEditTask={handleEditTask}
               onDeleteTask={handleDeleteTask}
@@ -165,8 +165,8 @@ export default function TaskBoard() {
 
             <TaskColumn
               title="Completed"
-              status={TaskStatus.DONE}
-              tasks={getTasksByStatus(TaskStatus.DONE)}
+              status={TaskStatus.COMPLETED}
+              tasks={getTasksByStatus(TaskStatus.COMPLETED)}
               columnClass="completed-column"
               onEditTask={handleEditTask}
               onDeleteTask={handleDeleteTask}

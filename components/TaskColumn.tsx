@@ -23,11 +23,11 @@ export function TaskColumn({
   const getNextStatus = (currentStatus: TaskStatus): TaskStatus => {
     switch (currentStatus) {
       case TaskStatus.PENDING:
-        return TaskStatus.IN_PROGRESS;
-      case TaskStatus.IN_PROGRESS:
-        return TaskStatus.COMPLETED;
-      case TaskStatus.COMPLETED:
         return TaskStatus.PENDING;
+      case TaskStatus.IN_PROGRESS:
+        return TaskStatus.IN_PROGRESS;
+      case TaskStatus.COMPLETED:
+        return TaskStatus.COMPLETED;
       default:
         return TaskStatus.PENDING;
     }

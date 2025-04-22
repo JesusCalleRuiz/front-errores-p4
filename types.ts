@@ -2,8 +2,8 @@ export interface User {
   _id: string;
   name: string;
   email: string;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Task {
@@ -12,14 +12,14 @@ export interface Task {
   description: string;
   status: TaskStatus;
   user: User;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export enum TaskStatus {
-  TODO = "todo",
   IN_PROGRESS = "in_progress",
-  DONE = "done",
+  PENDING = "pending",
+  COMPLETED = "completed"
 }
 
 export interface CreateUserRequest {
